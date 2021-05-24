@@ -1,8 +1,12 @@
-# [Java Reflect](https://www.imooc.com/learn/199)
+# [Java Reflect](https://github.com/happyflyer/Java-Reflect)
+
+- [反射——Java 高级开发必须懂的](https://www.imooc.com/learn/199)
 
 ## 1. Class 类
 
-- 在面向对象的世界里，万事万物皆对象（在 Java 中除了基本数据类型、静态成员），类是对象，类是 `java.lang.Class` 类的实例对象
+- 在面向对象的世界里
+  - 万事万物皆对象（在 Java 中除了基本数据类型、静态成员）
+  - 类是对象，类是 `java.lang.Class` 类的实例对象
 - 有一个类名字就叫 `Class`
 - 类也是对象，是 `Class` 类的实例对象，这个对象被我们称为该类的**类类型**
 - 可以通过类类型创建类的对象实例
@@ -44,7 +48,7 @@ try {
 }
 ```
 
-## 2. 动态加载
+## 2. 静态加载和动态加载
 
 ```java
 Class.forName("类的全称");
@@ -91,7 +95,9 @@ public class Office {
 
 `new` 创建对象是静态加载类，在编译时刻就需要加载所有可能用到的类。
 
-这种方法的弊端是显而易见的：如果有 100 个功能，只要有一个功能不能用，其他 99 个也不能使用！
+这种方法的弊端是显而易见的：
+
+- 如果有 100 个功能，只要有一个功能不能用，其他 99 个也不能使用！
 
 ### 2.2. 动态加载类
 
@@ -178,6 +184,9 @@ class A {
 ```java
 Method m = c.getMethod("print", new Class[]{int.class, int.class});
 Method m2 = c.getMethod("print", int.class, int.class);
+```
+
+```java
 Method m3 = c.getMethod("print", String.class, String.class);
 ```
 
@@ -186,6 +195,9 @@ Method m3 = c.getMethod("print", String.class, String.class);
 ```java
 m.invoke(a1, new Object[] { 10, 20 });
 m2.invoke(a1, 10, 20);
+```
+
+```java
 m.invoke(a1, "Hello", "World");
 ```
 
